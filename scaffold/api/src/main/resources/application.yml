@@ -56,7 +56,3 @@ mybatis-plus:
     db-config:
       id-type: auto # 主键策略
   mapper-locations: classpath*:/mapper/**/*.xml # mapper文件位置
-
-
-
-
