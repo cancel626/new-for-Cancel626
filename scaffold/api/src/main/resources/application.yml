@@ -1,0 +1,62 @@
+# 服务配置
+server:
+  port: 21090
+  servlet:
+    context-path: /api/v1.0/pet-adopt-api
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: your-access-key-id
+    access-key-secret: your-access-key-secret
+    bucket-name: your-bucket-name
+# API地址前缀，用于接口拦截放行
+my-server:
+  api-context-path: /api/v1.0/pet-adopt-api
+#MySQL与文件上传限制配置
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pet_adopt_system?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password: your-mysql-password
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: ""
+    jedis:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 10
+        min-idle: 0
+    timeout: 1000
+  mail:
+    host: smtp.qq.com
+    username: your-email@example.com
+    password: your-email-password
+    port: 465
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+    default-encoding: UTF-8
+# 让 Mybatis 在 Mapper目录下找到 XML 映射文件
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启日志
+    map-underscore-to-camel-case: true # 开启驼峰命名
+  global-config:
+    db-config:
+      id-type: auto # 主键策略
+  mapper-locations: classpath*:/mapper/**/*.xml # mapper文件位置
+
+
+
+
